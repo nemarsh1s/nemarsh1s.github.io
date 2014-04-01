@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-    <title>Proportional symbols for points</title>
+    <title>Average Teacher Salaries in St. Louis, MO</title>
     <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
     <style>
         html,
@@ -18,7 +18,7 @@
         body {
             background-color: #FFF;
             overflow: hidden;
-            font-family: "Trebuchet MS";
+            font-family: "Cambria";
         }
         #home {
             position: absolute;
@@ -32,7 +32,7 @@
             top: 0;
             padding: 10px;
             background-color: #999;
-            font: Verdana;
+            font: Cambria;
             width: 300px;
             z-index: 2;
             text-align: left;
@@ -51,7 +51,7 @@
                 map = new Map("map", {
                     basemap: "gray",
                     center: [-90.4, 38.6], // long, lat
-                    zoom: 10
+                    zoom: 5
                 });
                 //Create an instance of the HomeButton widget 
                 //add a reference to the map, second parameter is where to attach the widget
@@ -84,9 +84,9 @@
                             places: 0
                         }
                     }, {
-                        fieldName: "GRADUATES_",
+                        fieldName: "TEACHER_MA",
                         visible: true,
-                        label: "Percent of Graduated Students",
+                        label: "Teachers with Master's Degrees",
                         format: {
                             places: 0
                         }
@@ -113,9 +113,9 @@
                             places: 0
                         }
                     }, {
-                        fieldName: "GRADUATES_2",
+                        fieldName: "TEACHER_MA",
                         visible: true,
-                        label: "Percent of Graduated Students",
+                        label: "Teachers with Master's Degrees",
                         format: {
                             places: 0
                         }
@@ -153,7 +153,7 @@
 
                 districts.on("load", function () {
                     var symbol = new SimpleFillSymbol();
-                    symbol.setColor(new Color("#fbb4b9")); //grey
+                    symbol.setColor(new Color("#969696")); //grey
                     var renderer = new ClassBreaksRenderer(symbol, "TEACHER_SA");
                     renderer.addBreak({
                         minValue: 33587,
