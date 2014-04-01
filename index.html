@@ -144,7 +144,11 @@
                     maxSize: 30
                 };
 
-
+                schools.on("load", function () {
+                    schools.renderer.setProportionalSymbolInfo(proportionalSymbolInfo);
+                });
+                
+                
                 districts.on("load", function () {
                     var symbol = new SimpleFillSymbol();
                     symbol.setColor(new Color("#969696")); //grey
