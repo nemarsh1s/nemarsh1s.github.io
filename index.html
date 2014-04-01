@@ -43,7 +43,6 @@
     <script src="http://js.arcgis.com/3.8/"></script>
     <script>
         var map;
-         //Add reference to the modules in require()
         require(["esri/map", "esri/dijit/HomeButton", "esri/dijit/PopupTemplate", "esri/layers/FeatureLayer",
                 "esri/renderers/ClassBreaksRenderer", "dojo/_base/Color", "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleLineSymbol", "dojo/_base/array", "esri/dijit/Legend", "esri/symbols/TextSymbol", "esri/renderers/SimpleRenderer", "esri/layers/LabelLayer", "dojo/domReady!"
             ],
@@ -86,7 +85,7 @@
                     }, {
                         fieldName: "TEACHER_MA",
                         visible: true,
-                        label: "Teachers with Master's Degrees",
+                        label: "Percent of Teachers with Master's Degrees",
                         format: {
                             places: 0
                         }
@@ -115,7 +114,7 @@
                     }, {
                         fieldName: "TEACHER_MA",
                         visible: true,
-                        label: "Teachers with Master's Degrees",
+                        label: "Percent of Teachers with Master's Degrees",
                         format: {
                             places: 0
                         }
@@ -137,12 +136,12 @@
                 });
                 //define proportional symbol for school layer
                 var proportionalSymbolInfo = {
-                    field: "TEACHER_SA",
-                    valueUnit: "unknown",//required ["unknown","inches", "feet", "yards", "miles", "nautical-miles", "millimeters", 	"centimeters", "decimeters", "meters", "kilometers", "decimal-degrees"]
-                    minDataValue: 33587,
-                    maxDataValue: 75931,
+                    field: "TEACHER_MA",
+                    valueUnit: "unknown",
+                    minDataValue: 9%,
+                    maxDataValue: 100%,
                     minSize: 5,
-                    maxSize: 45
+                    maxSize: 30
                 };
 				
 
