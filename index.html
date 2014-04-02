@@ -88,11 +88,11 @@
                             places: 0
                         },
 		mediaInfos:[{
-         		caption: "Teacher Certificates",
-           		type:"barchart",
-          		value:{
-           		theme: "ThreeD",
-            		fields:["EDUCATOR_R","EDUCATOR_S","EDUCATOR_N"]}
+         	    caption: "Teacher Certificates",
+           	    type:"barchart",
+          	    value:{
+           	    theme: "ThreeD",
+            	    fields:["EDUCATOR_R","EDUCATOR_S","EDUCATOR_N"]}
 
                     }]
                 });
@@ -125,6 +125,45 @@
                         }
                     }]
                 });
+
+//Add function to execute attribute query
+        on(dom.byId("find"),"click",findCensus);
+        
+        var resultLayer = new GraphicsLayer();
+        
+        map.addLayer(resultLayer);
+        
+        function findCensus(){
+          resultLayer.clear();
+          var qt = new QueryTask(url);
+          var query = new Query;
+          query.where = "TEACHER_SA >" + dom.byId("value").value;//or HISP10>WHITE10
+          query.returnGeometry=true;
+          query.outFields = ["TEACHER_SA"];//The fewer fields you include, the faster the response will be.  Doesn't need to be in query.where
+          var symbol = new SimpleLineSymbol(
+            SimpleLineSymbol.STYLE_SOLID,
+            new Color([0,255,0,1]),1
+            );
+          qt.execute(query,function(results){// If the query is successful, the user-specified callback function is invoked with the result. 
+            console.log(results.features.length);
+            if (results.features.length>0){
+              for (var i =0,il = results.features.length;i<il;i++){
+                var graphic = results.features[i];
+                graphic.setSymbol(symbol);
+                resultLayer.add(graphic);
+              }
+            }
+            else {
+              alert("No census tract selected!");
+            }
+            
+          },function(error){alert("Error executing query!")});
+       
+        }
+        
+		  
+      });
+
 
                 //define user-defined layer from ArcGIS server // new FeatureLayer(url,{options?})
                 var schools = new FeatureLayer("http://gissl-aa.wustl.edu/arcgis/rest/services/JSP/School_District_BaseMap_2013/MapServer/0", {
