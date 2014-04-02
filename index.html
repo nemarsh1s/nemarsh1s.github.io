@@ -46,14 +46,12 @@
         require(["esri/map", "esri/dijit/HomeButton", "esri/dijit/PopupTemplate", "esri/layers/FeatureLayer",
                 "esri/renderers/ClassBreaksRenderer", "dojo/_base/Color", "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleLineSymbol", "dojo/_base/array", "esri/dijit/Legend", "esri/symbols/TextSymbol", "esri/renderers/SimpleRenderer", "esri/layers/LabelLayer", "dojo/domReady!"
             ],
-            function (Map, HomeButton, PopupTemplate, FeatureLayer, ClassBreaksRenderer, Color, SimpleFillSymbol, SimpleLineSymbol, arrayUtils, Legend, TextSymbol, SimpleRenderer, LabelLayer) {
+            function (Map, HomeButton, PopupTemplate, FeatureLayer, ClassBreaksRenderer, Color, SimpleFillSymbol, SimpleLineSymbol, arrayUtils, Legend, TextSymbol, SimpleRenderer, LabelLayer, dom,on,GraphicsLayer,QueryTask,Query) {
                 map = new Map("map", {
                     basemap: "gray",
-                    center: [-90.4, 38.6], // long, lat
+                    center: [-90.4, 38.6],
                     zoom: 10
                 });
-                //Create an instance of the HomeButton widget 
-                //add a reference to the map, second parameter is where to attach the widget
                 var home = new HomeButton({
                     map: map
                 }, "home");
@@ -88,7 +86,14 @@
                         label: "Percent of Teachers with Master's Degrees",
                         format: {
                             places: 0
-                        }
+                        },
+		mediaInfos:[{
+         		caption: "Teacher Certificates",
+           		type:"barchart",
+          		value:{
+           		theme: "ThreeD",
+            		fields:["EDUCATOR_R","EDUCATOR_S","EDUCATOR_N"]}
+
                     }]
                 });
                 //Add popup infobox for district layer
@@ -143,12 +148,12 @@
                     minSize: 5,
                     maxSize: 30
                 };
+				
 
                 schools.on("load", function () {
                     schools.renderer.setProportionalSymbolInfo(proportionalSymbolInfo);
                 });
-                
-                
+
                 districts.on("load", function () {
                     var symbol = new SimpleFillSymbol();
                     symbol.setColor(new Color("#969696")); //grey
