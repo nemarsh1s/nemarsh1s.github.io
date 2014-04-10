@@ -5,9 +5,7 @@
 	<meta charset="utf-8" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-			/* required styles */
-			
+
 			.leaflet-map-pane,
 			.leaflet-tile,
 			.leaflet-marker-icon,
@@ -42,11 +40,12 @@
 			.leaflet-marker-shadow {
 				display: block;
 				}
-			/* map is broken in FF if you have max-width: 100% on tiles */
+
 			.leaflet-container img {
 				max-width: none !important;
 				}
-			/* stupid Android 2 doesn't understand "max-width: none" properly */
+	
+	
 			.leaflet-container img.leaflet-image-layer {
 				max-width: 15000px !important;
 				}
@@ -61,7 +60,8 @@
 				width: 0;
 				height: 0;
 				}
-			/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+
+
 			.leaflet-overlay-pane svg {
 				-moz-user-select: none;
 				}
