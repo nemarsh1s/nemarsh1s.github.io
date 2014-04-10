@@ -18,11 +18,13 @@
 	<script>
 		var map = L.map('map').setView([-90.1978, 38.6272], 13);
 
-		L.tileLayer('http://{s}.tile.cloudmade.com/{key}/22677/256/{z}/{x}/{y}.png', {
+		L.tileLayer('http://{s}.tile.cloudmade.com/10d9f8e4181a5b2888c2aca2114fa09c/997/256/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
 		key: 'BC9A493B41014CAABB98F0471D759707'
 		}).addTo(map);
-
+		
+		var myLayer = L.geoJson().addTo(map);
+		myLayer.addData(geojsonFeature);
 
 		function onEachFeature(feature, layer) {
 			var popupContent = "<p>I started out as a GeoJSON " +
