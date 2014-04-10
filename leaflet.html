@@ -161,7 +161,28 @@
 			.leaflet-zoom-anim .leaflet-zoom-hide {
 				visibility: hidden;
 				}
-
+				
+			/* cursors */
+			
+			.leaflet-clickable {
+				cursor: pointer;
+				}
+			.leaflet-container {
+				cursor: -webkit-grab;
+				cursor:    -moz-grab;
+				}
+			.leaflet-popup-pane,
+			.leaflet-control {
+				cursor: auto;
+				}
+			.leaflet-dragging .leaflet-container,
+			.leaflet-dragging .leaflet-clickable {
+				cursor: move;
+				cursor: -webkit-grabbing;
+				cursor:    -moz-grabbing;
+				}
+			
+			
 
 			/* visual tweaks */
 			
@@ -470,7 +491,7 @@
 	<script src="http://leafletjs.com/dist/leaflet.js"></script>
 
 	<script>
-		var map = L.map('map').setView([39.74739, -105], 13);
+		var map = L.map('map').setView([90.1978, 38.6272], 13);
 
 		L.tileLayer('http://{s}.tile.cloudmade.com/10d9f8e4181a5b2888c2aca2114fa09c/997/256/{z}/{x}/{y}.png', {
 			attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
